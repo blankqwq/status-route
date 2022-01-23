@@ -8,5 +8,5 @@
 
 安装
 ```
-composer require blankqwq/mirai-sdk:dev-master -vvv
+composer require blankqwq/status-route:dev-master -vvv
 ```
