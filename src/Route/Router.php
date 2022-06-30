@@ -2,7 +2,10 @@
 
 namespace Blankqwq\StatusRoute\Route;
 
-class Router
+use Blankqwq\StatusRoute\Contract\RouterContract;
+use Blankqwq\StatusRoute\Rule\Status;
+
+class Router implements RouterContract
 {
     protected $routes;
 
@@ -38,27 +41,9 @@ class Router
 
     public function match($request, $currentQQ)
     {
-        // 根据request进行检索事件/数据
-        $miraiRequest = Translate::get($request);
-        // 获取当前QQ
-        $status = Status::get($currentQQ, $miraiRequest->type);
-        // 读取状态路由 先找指定路由
-        if ($miraiRequest instanceof Message) {
-            $runAction = $this->getCommandActions($miraiRequest, $miraiRequest);
-        } else {
-            $runAction = $this->getEventActions($miraiRequest, $miraiRequest);
-        }
-        $statusMiddleware = $this->getStatusActions($miraiRequest, $status);
-        //Pipeline执行
-        return (new Pipeline())
-            ->setMiddleware($statusMiddleware)
-            ->run($runAction, $miraiRequest);
+
     }
 
-    private function getStatusActions($miraiRequest, $action): array
-    {
-        return [];
-    }
 
     protected function getEventActions($obj, $status): array
     {

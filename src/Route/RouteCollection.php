@@ -15,7 +15,7 @@ class RouteCollection
 
     public function addToCollection(Route $route)
     {
-
+        // 转换为数组对象
 
     }
 }

@@ -40,14 +40,5 @@ class Route
         //获取action
     }
 
-    /**
-     * @param $qq
-     *
-     * @return $this
-     *               绑定特定QQ
-     */
-    public function qq($qq): Route
-    {
-        return $this;
-    }
+
 }
